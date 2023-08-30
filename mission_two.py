@@ -14,8 +14,3 @@ from robot_18300 import robot_18300
 
 def mission_two(r):
     print("Running Mission 2")
-    #Lydia and Madeleine
-    #Drive to Finn and John
-    r.robot.drive(601,0)  
-    wait(5000)
-    r.robot.stop()
