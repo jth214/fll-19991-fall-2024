@@ -14,7 +14,10 @@ from robot_18300 import robot_18300
 
 def mission_three(r):
     print("Running Mission 3")
-
+    #jackson yesue rolling camera
+    r.robot.straight(350)
+    wait(500)
+    r.robot.straight(-350)
 
 
 
