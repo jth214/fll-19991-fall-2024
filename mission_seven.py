@@ -20,5 +20,5 @@ def mission_seven(r):
     #Both front motors are now spinning to make the light tower go up!
     wait(3000)
     r.left_attachment_motor.stop()
-    r.right_attachment_motor.stop()
+    r.right_attachment_motor.stop()                        
     

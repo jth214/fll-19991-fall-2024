@@ -16,6 +16,10 @@ def mission_one(r):
     print("Running Mission 1")
     # 3d theater - john and kyle
     #r.robot.settings(straight_speed=300, straight_acceleration=500, turn_rate=200, turn_acceleration=123)
-    r.robot.straight(300)
-    r.robot.straight(-400)
+    #r.robot.straight(300)
+    #r.robot.straight(-400)
     #r.robot.settings(straight_speed=600, straight_acceleration=500, turn_rate=200, turn_acceleration=123)
+    r.right_attachment_motor.run(-800)
+    #Both front motors are now spinning to make the light tower go up!
+    wait(5000)
+    r.right_attachment_motor.stop()
