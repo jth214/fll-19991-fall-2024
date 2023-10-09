@@ -14,3 +14,13 @@ from robot_18300 import robot_18300
 
 def mission_five(r):
     print("Running Mission 5")
+    #madeleine going to the museum
+    r.robot.straight(500)
+    r.robot.turn(-45)
+    r.robot.straight(150)
+    r.robot.turn(45)
+    r.robot.straight(300)
+    r.robot.turn(45)
+    r.robot.straight(150)
+    
+    
