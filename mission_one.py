@@ -17,12 +17,13 @@ def mission_one(r):
     # 3d theater - john and kyle
     r.right_attachment_motor.reset_angle(0)
     r.left_attachment_motor.reset_angle(0)
-    r.right_attachment_motor.run_angle(300,30, then=Stop.HOLD, wait=False)
+    r.right_attachment_motor.run_angle(300,30, then=Stop.HOLD, wait=False)     
     r.left_attachment_motor.run_angle(300, -30, then=Stop.HOLD, wait=False)
-    wait(3000)
+    r.gyro_drive_straight_time(200, 1000)
     r.right_attachment_motor.run_angle(300,-30, then=Stop.HOLD, wait=False)
     r.left_attachment_motor.run_angle(300, 30, then=Stop.HOLD, wait=False)
-    r.gyro_drive_straight_time(10, 5500)       
-    r.gyro_drive_straight_time(10, 2500)       
-    r.robot.stop()
+    r.gyro_drive_straight_time(200, 1000)       
+    r.gyro_drive_straight_time(-100, 2500)
+    r.gyro_drive_straight_time(200, 2300)
+    r.gyro_drive_straight_time(-200, 2500)
  
