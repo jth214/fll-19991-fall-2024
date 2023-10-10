@@ -17,10 +17,10 @@ def mission_five(r):
     #madeleine going to the museum
     r.robot.straight(500)
     r.robot.turn(-45)
-    r.robot.straight(150)
-    r.robot.turn(45)
-    r.robot.straight(300)
-    r.robot.turn(45)
-    r.robot.straight(150)
+    r.robot.straight(250)
+    r.robot.turn(-45)
+    r.robot.straight(399)
+    r.robot.turn(60)
+    r.robot.straight(275)
     
     
