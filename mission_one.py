@@ -52,17 +52,7 @@ def mission_one(r):
     wait(800)
     r.robot.stop()
     #turn toward movie camera
-    r.gyro_tank_turn(50, 55)
+    r.gyro_tank_turn(50, 110)
     wait(750)
-    r.right_attachment_motor.stop()
-    r.left_attachment_motor.stop()
-    #robot drives 15.1cm towards camera
-    r.robot.straight(140)
-    #lower the arm
-    r.right_attachment_motor.run_time(100,750, then=Stop.COAST, wait=False)     
-    r.left_attachment_motor.run_time(-100,750, then=Stop.COAST, wait=False)
-    #drive straight until hit the thigy
-    r.robot.drive(100, 0)
-    wait(2000)
-    r.robot.drive(-50,50)
-    wait(3000)
+    r.robot.straight(300)
+   
