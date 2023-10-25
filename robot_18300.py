@@ -298,6 +298,7 @@ class robot_18300:
             # The robot should drive with the speed passed into this method, "gyro_drive_straight" and turn based on
             # the correction needed to keep going straight.
             self.robot.drive(speed,turn)
+        self.robot.stop()
 
     # gyro drive straight
     def gyro_drive_straight_time(self,speed, time):
@@ -334,5 +335,6 @@ class robot_18300:
 
             # The robot should drive with the speed passed into this method, "gyro_drive_straight" and turn based on
             # the correction needed to keep going straight.
-            self.robot.drive(speed,turn)                
+            self.robot.drive(speed,turn) 
+        self.robot.stop()               
 

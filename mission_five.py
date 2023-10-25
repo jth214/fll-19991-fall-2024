@@ -19,18 +19,14 @@ def mission_five(r):
     r.robot.turn(-45)
     r.robot.straight(250)
     r.robot.turn(-45)
-    r.robot.straight(460)
-    r.robot.turn(60)
-    r.robot.straight(275)
-    r.robot.turn(75)
-    r.robot.straight(101)
-    speed = 200
-    turn = 60
-    distance = 136
-    r.robot.reset()
-
-    # While the robot.distance() is less than or equal to the variable 'distance' stay in the while loop
-    while (r.robot.distance() <= distance):
-        r.robot.drive(speed,turn)
-    
+    r.robot.straight(532)
+    #turn torward wall
+    r.robot.turn(90)
+    r.robot.drive(200,0)
+    wait(1111)
+    r.robot.stop()
+    r.robot.straight(-103)
+    r.robot.turn(-90)
+  
+   
     
