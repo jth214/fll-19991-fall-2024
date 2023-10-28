@@ -14,19 +14,9 @@ from robot_18300 import robot_18300
 
 def mission_two(r):
     print("Running Mission 2")
-    # LOWER
-    r.right_attachment_motor.run_time(-1000,3000, then=Stop.HOLD, wait=False)     
-    r.left_attachment_motor.run_time(1000,3000, then=Stop.HOLD, wait=True)
-    wait(2500)
-    # RAISE
-    r.right_attachment_motor.run_time(1000,3000, then=Stop.HOLD, wait=False)     
-    r.left_attachment_motor.run_time(-1000,3000, then=Stop.HOLD, wait=True)
-    wait(2500)
-    # LOWER
-    r.right_attachment_motor.run_time(-1000,3000, then=Stop.HOLD, wait=False)     
-    r.left_attachment_motor.run_time(1000,3000, then=Stop.HOLD, wait=True)
-    wait(2500)
-    # RAISE
-    r.right_attachment_motor.run_time(1000,3000, then=Stop.HOLD, wait=False)     
-    r.left_attachment_motor.run_time(-1000,3000, then=Stop.HOLD, wait=True)
-    wait(2500)
+    #Wesleys Mission Turn Chicken.
+    r.robot.straight(350)
+    r.left_attachment_motor.run_angle(300, 90,then=Stop.HOLD, wait=True)
+    r.robot.straight(90)
+    wait(3000)
+    r.robot.straight(-650)
