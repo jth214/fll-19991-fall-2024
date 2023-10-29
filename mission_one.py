@@ -66,9 +66,13 @@ def mission_one(r):
     r.robot.stop()
     # turn to the right releasing one at a time and end up facing the south wall
     r.gyro_tank_turn(50,120)
-    #lower the arm 
-    #r.right_attachment_motor.run_time(200,750, then=Stop.COAST, wait=False)     
-    #r.left_attachment_motor.run_time(-200,750, then=Stop.COAST, wait=True)
+    #raise the arm 
+    r.robot.stop()
+    r.right_attachment_motor.stop()     
+    r.left_attachment_motor.stop()
+    r.right_attachment_motor.run_time(-300,4000, then=Stop.HOLD, wait=False)     
+    r.left_attachment_motor.run_time(300,4000, then=Stop.HOLD, wait=False)
+    wait(5000)
     # drive straight into sounth wall to sqar up 
     r.robot.drive(180,0)
     wait(1500)
@@ -84,13 +88,13 @@ def mission_one(r):
     # back up 
     r.robot.straight(-10)
     # raise the arm
-    r.right_attachment_motor.run_time(-1000,3000, then=Stop.HOLD, wait=False)     
-    r.left_attachment_motor.run_time(1000,3000, then=Stop.HOLD, wait=True)
+    r.right_attachment_motor.run_time(-300,3000, then=Stop.HOLD, wait=False)     
+    r.left_attachment_motor.run_time(300,3000, then=Stop.HOLD, wait=True)
     r.robot.turn(-60)
     r.robot.straight(-120)
     r.robot.straight(20)
-    r.right_attachment_motor.run_time(200,1000, then=Stop.COAST, wait=False)     
-    r.left_attachment_motor.run_time(-200,1000, then=Stop.COAST, wait=True)
+    r.right_attachment_motor.run_time(300,1000, then=Stop.COAST, wait=False)     
+    r.left_attachment_motor.run_time(-300,1000, then=Stop.COAST, wait=True)
     # back up while pulling the camera loop nto the film strip
     r.robot.drive(-100,-50)
     wait(1000)

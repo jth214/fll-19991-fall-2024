@@ -260,8 +260,8 @@ class robot_18300:
                 current_speed = max(unbound_speed, self.min_tank_turn_speed)
                 self.left_drive_motor.run(-current_speed)
                 self.right_drive_motor.run(current_speed)
-            self.left_drive_motor.brake()
-            self.right_drive_motor.brake()    
+        self.left_drive_motor.brake()
+        self.right_drive_motor.brake()    
 
     # gyro drive straight
     def gyro_drive_straight_distance(self,speed, distance):

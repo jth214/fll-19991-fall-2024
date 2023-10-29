@@ -14,3 +14,11 @@ from robot_18300 import robot_18300
 
 def mission_four(r):
     print("Running Mission 4")
+    # raise the arm
+    r.right_attachment_motor.run_time(-1000,4000, then=Stop.HOLD, wait=False)     
+    r.left_attachment_motor.run_time(1000,4000, then=Stop.HOLD, wait=False)
+    wait(5000)
+    # lowe the arm
+    r.right_attachment_motor.run_time(1000,4000, then=Stop.HOLD, wait=False)     
+    r.left_attachment_motor.run_time(-1000,4000, then=Stop.HOLD, wait=False)
+    wait(5000)
