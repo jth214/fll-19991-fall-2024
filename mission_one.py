@@ -65,37 +65,46 @@ def mission_one(r):
     wait(1200)
     r.robot.stop()
     # turn to the right releasing one at a time and end up facing the south wall
-    r.gyro_tank_turn(50,120)
+    r.gyro_tank_turn(50,130)
     #raise the arm 
     r.robot.stop()
     r.right_attachment_motor.stop()     
     r.left_attachment_motor.stop()
     r.right_attachment_motor.run_time(-300,4000, then=Stop.HOLD, wait=False)     
     r.left_attachment_motor.run_time(300,4000, then=Stop.HOLD, wait=False)
-    wait(5000)
     # drive straight into sounth wall to sqar up 
-    r.robot.drive(180,0)
+    r.robot.drive(280,0)
     wait(1500)
     r.robot.stop()
-    # back up 5 cm to make space so the robot can turn.
-    r.robot.straight(-50)
+    # back up 15 cm to make space so the robot can turn.
+    r.robot.straight(-150)
     # turn towards roller coster
-    r.robot.turn(-50)
+    r.robot.turn(-70)
+    #lower the arm
+    r.right_attachment_motor.run_time(300,1000, then=Stop.COAST, wait=False)     
+    r.left_attachment_motor.run_time(-300,1000, then=Stop.COAST, wait=True)
     #drive forwards into roller coaster 
     r.robot.drive(100,0)
     wait(1800)
     r.robot.stop()
     # back up 
-    r.robot.straight(-10)
+    r.robot.straight(-20)
     # raise the arm
     r.right_attachment_motor.run_time(-300,3000, then=Stop.HOLD, wait=False)     
     r.left_attachment_motor.run_time(300,3000, then=Stop.HOLD, wait=True)
-    r.robot.turn(-60)
-    r.robot.straight(-120)
-    r.robot.straight(20)
+    r.robot.turn(-20)
+    r.robot.straight(50)
+    wait(500)
+    #lower the arm
     r.right_attachment_motor.run_time(300,1000, then=Stop.COAST, wait=False)     
     r.left_attachment_motor.run_time(-300,1000, then=Stop.COAST, wait=True)
     # back up while pulling the camera loop nto the film strip
-    r.robot.drive(-100,-50)
-    wait(1000)
+    r.robot.drive(-100,-20)
+    wait(2000)
+    r.robot.stop()
+    # raise the arm
+    r.right_attachment_motor.run_time(-300,3000, then=Stop.HOLD, wait=False)     
+    r.left_attachment_motor.run_time(300,3000, then=Stop.HOLD, wait=True)
+    r.robot.drive(-100,50)
+    wait(2000)
     r.robot.stop()
