@@ -29,9 +29,11 @@ def mission_five(r):
     r.robot.straight(112)
     r.robot.turn(37)
     r.robot.straight(-200)
-    #r.robot.settings(straight_speed=100, straight_acceleration=300, turn_rate=200, turn_acceleration=123)
+    r.robot.stop()
+    r.robot.settings(straight_speed=100, straight_acceleration=300, turn_rate=200, turn_acceleration=123)
     r.robot.straight(70)
-    #r.robot.settings(straight_speed=400, straight_acceleration=300, turn_rate=200, turn_acceleration=123)
+    r.robot.stop()
+    r.robot.settings(straight_speed=400, straight_acceleration=300, turn_rate=200, turn_acceleration=123)
     #Facing augmented reality
     r.robot.turn(50)
     r.robot.straight(-123)
