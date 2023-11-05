@@ -28,14 +28,14 @@ def mission_five(r):
     r.robot.stop()
     r.robot.straight(112)
     r.robot.turn(37)
-    r.robot.straight(-200)
     r.robot.stop()
-    r.robot.settings(straight_speed=100, straight_acceleration=300, turn_rate=200, turn_acceleration=123)
-    r.robot.straight(70)
+    r.robot.drive(-75,0)
+    wait(2000)
     r.robot.stop()
-    r.robot.settings(straight_speed=400, straight_acceleration=300, turn_rate=200, turn_acceleration=123)
     #Facing augmented reality
-    r.robot.turn(50)
+    #r.robot.turn(50)
+    r.gyro_tank_turn(70,50) 
+    r.robot.stop()
     r.robot.straight(-123)
-   
+    r.robot.turn(-30)
     
