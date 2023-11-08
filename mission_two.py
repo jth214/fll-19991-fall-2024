@@ -15,8 +15,16 @@ from robot_18300 import robot_18300
 def mission_two(r):
     print("Running Mission 2")
     #Wesleys Mission Turn Chicken.
-    r.robot.straight(350)
-    r.left_attachment_motor.run_angle(300, 90,then=Stop.HOLD, wait=True)
+    #drives to skater girl
+    r.robot.straight(325)
+    r.left_attachment_motor.run_time(300, 90,then=Stop.HOLD, wait=True)
+    #drivesto chicken 
     r.robot.straight(90)
+    #lifts flap
+    r.right_attachment_motor.run_time(300,4000, then=Stop.HOLD, wait=False)     
+    #waits 
     wait(3000)
-    r.robot.straight(-650)
+    #backs up and finishes lift flap
+    r.robot.straight(-100)
+    r.right_attachment_motor.run_angle(-500, 150,then=Stop.HOLD, wait=True)
+    r.robot.stop()
