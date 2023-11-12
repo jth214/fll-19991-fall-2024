@@ -15,7 +15,10 @@ from robot_18300 import robot_18300
 def mission_three(r):
     print("Running Mission 3")
     #jackson yesue rolling camera
-    r.robot.straight(350)
+    # drive straight into roller coaster
+    r.robot.drive(300,-10)
+    wait(1500)
+    r.robot.stop()
     wait(500)
     r.robot.straight(-350)
 
