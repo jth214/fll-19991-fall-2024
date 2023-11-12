@@ -14,7 +14,7 @@ from robot_18300 import robot_18300
 
 def mission_one(r):
     print("Running Mission 1")
-    # 3d theater - john and kyle
+    # 3d theater and more! - john and kyle
     wait(250)
     r.robot.stop()
     r.right_attachment_motor.stop()
