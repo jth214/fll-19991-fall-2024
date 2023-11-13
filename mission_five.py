@@ -20,15 +20,20 @@ def mission_five(r):
     r.robot.straight(-343)
     #Robot is facing the set change mission.
     r.robot.turn(-45)
-    r.robot.straight(-501)
+    r.robot.straight(-551)
     #turn torward wall
     r.robot.turn(90)
     r.robot.drive(-200,0)
     wait(1111)
     #The robot is now at the wall
     r.robot.stop()
-    r.robot.straight(112)
+    r.robot.straight(37)
+    r.robot.turn(9)
+    r.robot.straight(291)
     #Backing up
+    r.left_attachment_motor.run_time(-300,6000, then=Stop.HOLD, wait=False)
+    wait(5000)
+    r.robot.straight(50)
     r.robot.turn(37)
     r.robot.stop()
     #Robot is Facing Augmented reality.
