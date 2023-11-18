@@ -20,7 +20,7 @@ def mission_five(r):
     r.robot.straight(-343)
     #Robot is facing the set change mission.
     r.robot.turn(-45)
-    r.robot.straight(-301)
+    r.robot.straight(-351)
     #turn torward wall
     #r.robot.turn(90)
     r.robot.drive(-100,35)
@@ -28,7 +28,7 @@ def mission_five(r):
     #The robot is now at the wall
     r.robot.stop()
     r.robot.straight(37)
-    r.robot.turn(9)
+    r.robot.turn(15)
     r.robot.straight(291)
     #Backing up
     r.left_attachment_motor.run_time(-300,6000, then=Stop.HOLD, wait=False)
