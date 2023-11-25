@@ -15,8 +15,33 @@ from robot_18300 import robot_18300
 def mission_two(r):
     print("Running Mission 2")
     #Wesleys Mission Turn Chicken.
-    #drives to skater girl
-    r.robot.straight(415)
-    r.right_attachment_motor.run_time(300, 1000,then=Stop.HOLD, wait=True)
-    #lifts flap
-    r.robot.straight(-650)
+    #drives to skater girl 
+    r.robot.straight(400)
+    #drive hard into chicken
+    r.robot.drive(200,0)
+    wait(1000)
+    r.robot.stop()
+    #press gently into chicken or else it will get stuck from the force
+    r.robot.drive(100,0)
+    wait(2000)
+    r.robot.stop()
+    #lower arm - use coast to make it so the motor does not run while it is down.
+    r.right_attachment_motor.run_time(300, 1000,then=Stop.COAST, wait=True)
+    #back up and lifts flap
+    r.robot.straight(-160)
+    # resets the motor angle to zero and raises the arm 
+    r.right_attachment_motor.stop()
+    r.right_attachment_motor.reset_angle(0)
+    r.right_attachment_motor.run_angle(-200, 180,then=Stop.HOLD, wait=True)
+    r.robot.turn(45)
+    r.robot.straight(350)
+    r.robot.drive(100,20)
+    wait(2300)
+    r.robot.stop()
+    r.right_attachment_motor.run_angle(200, 103,then=Stop.HOLD, wait=True)
+    wait(500)
+    r.robot.drive(-400,-55)
+    wait(3000)
+    r.right_attachment_motor.run_time(-300, 500,then=Stop.COAST, wait=True)
+    r.robot.stop()
+    

@@ -18,7 +18,8 @@ def mission_five(r):
     r.robot.straight(-323)
     r.robot.turn(-45)
     r.robot.straight(-343)
-    #Robot is facing the set change mission.
+    #Robot is 
+    #facing the set change mission.
     r.robot.turn(-45)
     r.robot.straight(-351)
     #turn torward wall
