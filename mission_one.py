@@ -55,26 +55,35 @@ def mission_one(r):
     wait(4000)
     r.robot.stop()
     #backup
-    r.robot.straight(-10)
+    #r.robot.straight(-10)
     # raise the arm
-    r.right_attachment_motor.run_time(-1000,4000, then=Stop.HOLD, wait=False)     
-    r.left_attachment_motor.run_time(1000,4000, then=Stop.HOLD, wait=False)
-    wait(500)
+    r.right_attachment_motor.stop()
+    r.left_attachment_motor.stop()
+    r.right_attachment_motor.reset_angle(0)
+    r.left_attachment_motor.reset_angle(0)
+    r.right_attachment_motor.run_angle(300, -30, then=Stop.HOLD, wait=False)     
+    r.left_attachment_motor.run_angle(300, 30, then=Stop.HOLD, wait=False)
+    #r.right_attachment_motor.run_time(-50,4000, then=Stop.HOLD, wait=False)     
+    #r.left_attachment_motor.run_time(50,4000, then=Stop.HOLD, wait=False)
+    #wait(500)
     # driving forward for 800 miliseconds while lifting arm to raise mixer levers
     r.robot.drive(50,0)
-    wait(1200)
+    wait(1000)
     r.robot.stop()
     # turn to the right releasing one at a time and end up facing the south wall
-    r.gyro_tank_turn(100,130)
+    r.robot.straight(-10)
+    r.robot.stop()
+    wait(200)
+    r.gyro_tank_turn(75,130)
     #raise the arm 
     r.robot.stop()
     r.right_attachment_motor.stop()     
     r.left_attachment_motor.stop()
-    r.right_attachment_motor.run_time(-300,4000, then=Stop.HOLD, wait=False)     
-    r.left_attachment_motor.run_time(300,4000, then=Stop.HOLD, wait=False)
+    r.right_attachment_motor.run_time(-300,1000, then=Stop.HOLD, wait=False)     
+    r.left_attachment_motor.run_time(300,1000, then=Stop.HOLD, wait=False)
     # drive straight into sounth wall to sqar up 
     r.robot.drive(200,0)
-    wait(1500)
+    wait(1600)
     r.robot.stop()
     # back up 15 cm to make space so the robot can turn.
     r.robot.straight(-150)
@@ -88,7 +97,7 @@ def mission_one(r):
     wait(1600)
     r.robot.stop()
     # back up 
-    r.robot.straight(-20)
+    r.robot.straight(-40)
     # raise the arm
     r.right_attachment_motor.run_time(-300,500, then=Stop.HOLD, wait=False)     
     r.left_attachment_motor.run_time(300,500, then=Stop.HOLD, wait=True)
@@ -105,8 +114,8 @@ def mission_one(r):
     # raise the arm
     r.right_attachment_motor.run_time(-300,500, then=Stop.HOLD, wait=False)     
     r.left_attachment_motor.run_time(300,500, then=Stop.HOLD, wait=True)
-    r.robot.drive(300,-50)
-    wait(1000)
+    r.robot.drive(300,-30)
+    wait(700)
     r.robot.stop()
     r.right_attachment_motor.stop()
     r.left_attachment_motor.stop()

@@ -38,7 +38,8 @@ def mission_two(r):
     r.robot.drive(100,20)
     wait(2300)
     r.robot.stop()
-    r.right_attachment_motor.run_angle(200, 103,then=Stop.HOLD, wait=True)
+    # THE ARm lowers to flip the orange lever
+    r.right_attachment_motor.run_angle(200, 103,then=Stop.COAST, wait=True)
     wait(500)
     r.robot.drive(-400,-55)
     wait(3000)
