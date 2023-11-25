@@ -16,7 +16,7 @@ def mission_three(r):
     print("Running Mission 3")
     #jackson yesue rolling camera
     # drive straight into roller coaster
-    r.robot.drive(300,-10)
+    r.robot.drive(200,-0)
     wait(1500)
     r.robot.stop()
     wait(500)
