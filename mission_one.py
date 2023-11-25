@@ -73,8 +73,8 @@ def mission_one(r):
     r.right_attachment_motor.run_time(-300,4000, then=Stop.HOLD, wait=False)     
     r.left_attachment_motor.run_time(300,4000, then=Stop.HOLD, wait=False)
     # drive straight into sounth wall to sqar up 
-    r.robot.drive(280,0)
-    wait(1400)
+    r.robot.drive(200,0)
+    wait(1500)
     r.robot.stop()
     # back up 15 cm to make space so the robot can turn.
     r.robot.straight(-150)
@@ -105,7 +105,7 @@ def mission_one(r):
     # raise the arm
     r.right_attachment_motor.run_time(-300,500, then=Stop.HOLD, wait=False)     
     r.left_attachment_motor.run_time(300,500, then=Stop.HOLD, wait=True)
-    r.robot.drive(-300,50)
+    r.robot.drive(300,-50)
     wait(1000)
     r.robot.stop()
     r.right_attachment_motor.stop()
