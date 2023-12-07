@@ -84,7 +84,10 @@ def mission_one(r):
     # drive straight into sounth wall to sqar up 
     r.robot.drive(200,0)
     wait(1600)
+    # added a different kind of stop becuase the robot was stalling on the wall
     r.robot.stop()
+    while(robot.state()[1]>10):
+        wait(10)
     # back up 15 cm to make space so the robot can turn.
     r.robot.straight(-150)
     # turn towards roller coster
