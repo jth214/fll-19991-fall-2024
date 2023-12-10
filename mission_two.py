@@ -22,13 +22,13 @@ def mission_two(r):
     wait(1000)
     r.robot.stop()
     #press gently into chicken or else it will get stuck from the force
-    r.robot.drive(100,0)
+    r.robot.drive(50,0)
     wait(2000)
     r.robot.stop()
     #lower arm - use coast to make it so the motor does not run while it is down.
-    r.right_attachment_motor.run_time(300, 1000,then=Stop.COAST, wait=True)
+    r.right_attachment_motor.run_time(300, 1200,then=Stop.COAST, wait=True)
     #back up and lifts flap
-    r.robot.straight(-160)
+    r.robot.straight(-180)
     # resets the motor angle to zero and raises the arm 
     r.right_attachment_motor.stop()
     r.right_attachment_motor.reset_angle(0)
@@ -40,9 +40,14 @@ def mission_two(r):
     r.robot.stop()
     # THE ARm lowers to flip the orange lever
     r.right_attachment_motor.run_angle(200, 103,then=Stop.COAST, wait=True)
-    wait(500)
-    r.robot.drive(-400,-55)
-    wait(3000)
+    wait(1000)
+    r.robot.straight(-150)
+    r.robot.turn(120)
+    r.robot.straight(500)
+    #r.robot.drive(-100,-35)
+    #wait(1000)
+    #r.robot.drive(-400,-55)
+    #wait(2000)
     r.right_attachment_motor.run_time(-300, 500,then=Stop.COAST, wait=True)
     r.robot.stop()
     
