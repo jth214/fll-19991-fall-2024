@@ -86,7 +86,7 @@ def mission_one(r):
     wait(1600)
     # added a different kind of stop becuase the robot was stalling on the wall
     r.robot.stop()
-    while(robot.state()[1]>10):
+    while(r.robot.state()[1]>10):
         wait(10)
     # back up 15 cm to make space so the robot can turn.
     r.robot.straight(-150)
