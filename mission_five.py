@@ -21,10 +21,11 @@ def mission_five(r):
     #Robot is 
     #facing the set change mission.
     r.robot.turn(-45)
-    r.robot.straight(-321)
+    r.robot.straight(-391)
+    #Used to be -321 /\
     #turn torward wall
     #r.robot.turn(90)
-    r.robot.drive(-200,75)
+    r.robot.drive(-200,87)
     wait(3011)
     #The robot is now at the wall
     r.robot.stop()

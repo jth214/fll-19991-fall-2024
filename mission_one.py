@@ -83,7 +83,7 @@ def mission_one(r):
     r.left_attachment_motor.run_time(300,1000, then=Stop.HOLD, wait=False)
     # drive straight into sounth wall to sqar up 
     r.robot.drive(200,0)
-    wait(1600)
+    wait(1800)
     # added a different kind of stop becuase the robot was stalling on the wall
     r.robot.stop()
     while(r.robot.state()[1]>10):
@@ -99,6 +99,8 @@ def mission_one(r):
     r.robot.drive(100,0)
     wait(1600)
     r.robot.stop()
+    while(r.robot.state()[1]>10):
+        wait(10)
     # back up 
     r.robot.straight(-40)
     # raise the arm
@@ -111,7 +113,7 @@ def mission_one(r):
     r.right_attachment_motor.run_time(300,500, then=Stop.COAST, wait=False)     
     r.left_attachment_motor.run_time(-300,500, then=Stop.COAST, wait=True)
     # back up while pulling the camera loop nto the film strip
-    r.robot.drive(-150,-20)
+    r.robot.drive(-150,-30)
     wait(1500)
     r.robot.stop()
     # raise the arm
