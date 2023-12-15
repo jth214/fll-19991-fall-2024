@@ -241,6 +241,8 @@ class robot_18300:
         #Get the current angle
         starting_angle = self.gyro_sensor.angle()
         target_angle = starting_angle - angle
+        # Robot must be stopped first
+        self.robot.stop()
         # The gyro is mounted upside-down which reverses the gyro measurements 
         if angle >= 0:
         #clockwise
@@ -281,11 +283,10 @@ class robot_18300:
 
         # Get the current gyro angle.  This is the direction the robot should keep driving. 
         starting_angle = self.gyro_sensor.angle()
-       
         # Create a while loop so the robot will drive until it reaches the target distance.  Inside the loop
         # the robot's current direction, "self.gyro_sensor.angle()" is repeatedly checked to see if it has gone off course. 
         # If needed, a course correction is made to turn back to the desired direction (starting_angle)
-        while self.robot.distance() <= distance:
+        while abs(self.robot.distance()) <= distance:
             # Calculate the error (the difference) between where the robot should be pointed and where it is pointed
             # Where the robot should be pointed:     starting_angle
             # Where the robot is currently pointed:  self.gyro_sensor.angle()
