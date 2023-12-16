@@ -114,7 +114,7 @@ def mission_one(r):
     r.left_attachment_motor.run_time(-300,500, then=Stop.COAST, wait=True)
     # back up while pulling the camera loop nto the film strip
     r.robot.drive(-150,-30)
-    wait(1500)
+    wait(1300)
     r.robot.stop()
     # raise the arm
     r.right_attachment_motor.run_time(-300,500, then=Stop.HOLD, wait=False)     
