@@ -1,4 +1,4 @@
-# Team 18300 Robotics 
+# Team 19991 Robotics 
 
 2023 MasterPiece Robot Game Rules:
 https://firstinspiresst01.blob.core.windows.net/first-in-show-masterpiece/fll-challenge/fll-challenge-masterpiece-rgr-en.pdf
@@ -14,6 +14,3 @@ https://github.com/fll-18300/fall_2023
 
 Pybrics Documentation:
 https://pybricks.com/ev3-micropython/index.html
-
-Team 18300 Jira Tasks:
-https://fllteam18300.atlassian.net/
