@@ -16,3 +16,10 @@ def mission_one(r):
     print("Running Mission 1")
     # Mission Name
     # Authors
+    r.ev3.screen.clear()
+    print("Running Mission 1")
+    r.ev3.screen.draw_text(30, 60, "Mission 1")
+    wait(100)
+    # Mission Name
+    # Authors
+    r.gyro_drive_straight_distance(speed=500,distance=2000)
