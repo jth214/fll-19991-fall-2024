@@ -1,110 +1,58 @@
-r.robot.stop()
-r.robot.calibrate_gyro(port_number):
+''' 
+Large Motors (wheels):
+    Minimum speed = 50
+    Maximum speed = 1050
+
+Medium Motors (attachments):
+    Minimum speed = 50
+    Maximum speed = 1560
+
+All Motors:
+    stop() = glide to a stop
+    brake() = friction stop then release
+    hold() = stop and keep holding stopped
+
+Times are always in milliseconds
+Angles are always in degrees
+
+Stop.COAST = let the motor move freely
+Stop.BRAKE = passive braking
+Stop.HOLD = keep the motor at the stopped angle
+'''
+r.robot.stop() 
+r.robot.brake()
+r.robot.hold()
+
+wait(time)
+
+r.robot.calibrate_gyro(port_number which is 4):
 r.robot.gyro_tank_turn(speed, angle):
         ''' Tank turn using the gyro
             angle positive = clockwise
             angle negative = counter-clockwise
-            speed minimum 50 maximum 
+            speed minimum 50 maximum 1050 
         '''
-        min_speed = 50
-        #Get the current angle
-        starting_angle = self.gyro_sensor.angle()
-        target_angle = starting_angle - angle
-        # Robot must be stopped first
-        self.robot.stop()
-        # The gyro is mounted upside-down which reverses the gyro measurements 
-        if angle >= 0:
-        #clockwise
-            while self.gyro_sensor.angle() >= target_angle:
-                # Ramp the speed based on the perecntage of the turn completed.
-                scale = abs((self.gyro_sensor.angle() - starting_angle) / (target_angle - starting_angle))
-                unbound_speed = speed * (1 - scale)
-                current_speed = max(unbound_speed, self.min_tank_turn_speed)
-                self.left_drive_motor.run(current_speed)
-                self.right_drive_motor.run(-current_speed)
-        else:
-        #counter-clockwise
-            while self.gyro_sensor.angle() <= target_angle:
-                # Ramp the speed based on the perecntage of the turn completed.
-                scale = abs((self.gyro_sensor.angle() - starting_angle) / (target_angle - starting_angle))
-                unbound_speed = speed * (1 - scale)
-                current_speed = max(unbound_speed, self.min_tank_turn_speed)
-                self.left_drive_motor.run(-current_speed)
-                self.right_drive_motor.run(current_speed)
-        self.left_drive_motor.brake()
-        self.right_drive_motor.brake()    
-
-    # gyro drive straight
-    def gyro_drive_straight_distance(self,speed, distance):
+r.robot.gyro_drive_straight_distance(speed, distance):
         ''' Drive straight using the gyro.
-            Use a proportional feedback loop.
+            speed min 50 max 1050
+            distance in mm
         '''
-        # Reset the distance to 0.
-        self.robot.reset()
-
-        # Define the feedback loop gain value, "pd."  This determines how much the robot
-        # will correct when it drives off course.  
-        # This value may need to be adjusted.  Here are some tips:
-        # 1) If the value is too large, the robot will over-correct for errors and snake back and forth.  
-        # 2) If the value is too small, the robot will not correct enough and will go off course.
-        # 3) If the robot spins in circles, try making this value negative (pd=-1)
-        pd = -4
-
-        # Get the current gyro angle.  This is the direction the robot should keep driving. 
-        starting_angle = self.gyro_sensor.angle()
-        # Create a while loop so the robot will drive until it reaches the target distance.  Inside the loop
-        # the robot's current direction, "self.gyro_sensor.angle()" is repeatedly checked to see if it has gone off course. 
-        # If needed, a course correction is made to turn back to the desired direction (starting_angle)
-        while abs(self.robot.distance()) <= distance:
-            # Calculate the error (the difference) between where the robot should be pointed and where it is pointed
-            # Where the robot should be pointed:     starting_angle
-            # Where the robot is currently pointed:  self.gyro_sensor.angle()
-            direction_error = starting_angle - self.gyro_sensor.angle()
-
-            # Use the feedback loop gain value, "pd" multiplied by the, "direction_error" to make the robot turn back
-            # on course.
-            turn = direction_error * pd
-
-            # The robot should drive with the speed passed into this method, "gyro_drive_straight" and turn based on
-            # the correction needed to keep going straight.
-            self.robot.drive(speed,turn)
-        self.robot.stop()
-
-    # gyro drive straight
-    def gyro_drive_straight_time(self,speed, time):
+r.robot.gyro_drive_straight_time(speed, time):
         ''' Drive straight using the gyro.
-            Use a proportional feedback loop.
+            speed min 50 max 1050
+            time in ms
         '''
-        # Reset the time to 0.
-        watch = StopWatch()
-        watch.reset()
+r.left_attachment_motor.run_(speed)
+r.right_attachment_motor.run_(speed)
 
-        # Define the feedback loop gain value, "pd."  This determines how much the robot
-        # will correct when it drives off course.  
-        # This value may need to be adjusted.  Here are some tips:
-        # 1) If the value is too large, the robot will over-correct for errors and snake back and forth.  
-        # 2) If the value is too small, the robot will not correct enough and will go off course.
-        # 3) If the robot spins in circles, try making this value negative (pd=-1)
-        pd = -4
+r.left_attachment_motor.run_time(speed, time, then=Stop.HOLD, wait=True)
+r.right_attachment_motor.run_time(speed, time, then=Stop.HOLD, wait=True)
 
-        # Get the current gyro angle.  This is the direction the robot should keep driving. 
-        starting_angle = self.gyro_sensor.angle()
-       
-        # Create a while loop so the robot will drive until it reaches the target distance.  Inside the loop
-        # the robot's current direction, "self.gyro_sensor.angle()" is repeatedly checked to see if it has gone off course. 
-        # If needed, a course correction is made to turn back to the desired direction (starting_angle)
-        while watch.time() <= time:
-            # Calculate the error (the difference) between where the robot should be pointed and where it is pointed
-            # Where the robot should be pointed:     starting_angle
-            # Where the robot is currently pointed:  self.gyro_sensor.angle()
-            direction_error = starting_angle - self.gyro_sensor.angle()
+r.left_attachment_motor.run_angle(speed, angle, then=Stop.HOLD, wait=True)
+r.right_attachment_motor.run_angle(speed, angle, then=Stop.HOLD, wait=True)
 
-            # Use the feedback loop gain value, "pd" multiplied by the, "direction_error" to make the robot turn back
-            # on course.
-            turn = direction_error * pd
-
-            # The robot should drive with the speed passed into this method, "gyro_drive_straight" and turn based on
-            # the correction needed to keep going straight.
-            self.robot.drive(speed,turn) 
-        self.robot.stop()               
-
+r.left_attachment_motor.run_target(speed, angle, then=Stop.HOLD, wait=True)
+r.right_attachment_motor.run_target(speed, angle, then=Stop.HOLD, wait=True)
+''' Note the difference between run_angle and run_target one is relative and one is absolute
+    so if the motor gets messed up run angle will rotate whatever you say but run_target
+    will stop when it gets to the angle you want'''
