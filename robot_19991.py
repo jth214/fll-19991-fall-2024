@@ -291,6 +291,7 @@ class robot_19991:
             # Where the robot should be pointed:     starting_angle
             # Where the robot is currently pointed:  self.gyro_sensor.angle()
             direction_error = starting_angle - self.gyro_sensor.angle()
+            print(self.gyro_sensor.angle())
 
             # Use the feedback loop gain value, "pd" multiplied by the, "direction_error" to make the robot turn back
             # on course.

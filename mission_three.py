@@ -16,6 +16,16 @@ def mission_three(r):
     print("Running Mission 3")
     # Mission Name
     # Authors
+    r.ev3.screen.clear()
+    print("Running Mission 3")
+    r.ev3.screen.draw_text(30, 60, "Mission 3")
+    wait(time=100)
+    # Mission Name
+    # Authors
+    r.gyro_drive_straight_distance(speed=1050,distance=500)
+    r.gyro_tank_turn(1050,50)
+    r.gyro_drive_straight_distance(speed=1050,distance=500)
+    
 
 
 
