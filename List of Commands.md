@@ -42,8 +42,8 @@ r.robot.gyro_drive_straight_time(speed, time):
             speed min 50 max 1050
             time in ms
         '''
-r.left_attachment_motor.run_(speed)
-r.right_attachment_motor.run_(speed)
+r.left_attachment_motor.run(speed)
+r.right_attachment_motor.run(speed)
 
 r.left_attachment_motor.run_time(speed, time, then=Stop.HOLD, wait=True)
 r.right_attachment_motor.run_time(speed, time, then=Stop.HOLD, wait=True)

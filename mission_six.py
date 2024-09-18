@@ -16,3 +16,12 @@ def mission_six(r):
     print("Running Mission 6")
     # Mission Name
     # Authors
+    r.ev3.screen.clear()
+    print("Running Mission 6")
+    r.ev3.screen.draw_text(30, 60, "Mission 6")
+    wait(time=100)
+    # Mission Name
+    # Authors
+    r.left_attachment_motor.run_angle(1500, 90, then=Stop.BRAKE, wait=True)
+    wait(time=500)
+    r.left_attachment_motor.run_angle(1500, -80, then=Stop.BRAKE, wait=True)    

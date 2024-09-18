@@ -16,3 +16,10 @@ def mission_seven(r):
     print("Running Mission 7")
     # Mission Name
     # Authors
+    r.ev3.screen.clear()
+    print("Running Mission 7")
+    r.ev3.screen.draw_text(30, 60, "Mission 7")
+    wait(time=100)
+    # Mission Name
+    # Authors
+    r.robot.straight(distance=1500)

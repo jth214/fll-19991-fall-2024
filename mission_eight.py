@@ -16,6 +16,11 @@ def mission_eight(r):
     print("Running Mission 8")
     # Mission Name
     # Authors
-    
-
-    
+    r.ev3.screen.clear()
+    print("Running Mission 8")
+    r.ev3.screen.draw_text(30, 60, "Mission 8")
+    wait(time=100)
+    # Mission Name
+    # Authors
+    r.robot.drive(speed=1050, turn_rate=0)
+    wait(time=4000)

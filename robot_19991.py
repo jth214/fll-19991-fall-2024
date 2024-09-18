@@ -14,6 +14,22 @@ from pybricks.tools import wait, StopWatch
 from pybricks.hubs import EV3Brick
 from pybricks.media.ev3dev import Font
 
+# Define all constants here
+STRAIGHT_SPEED = 400
+STRAIGHT_ACCELERATION = 75
+WHEEL_DIAMETER=56.5
+AXLE_TRACK_MM=88
+TURN_RATE=200
+TURN_ACCELERATION=75
+MIN_DRIVE_SPEED = 60
+DRIVE_ACCELERATION = 1
+MIN_TANK_TURN_SPEED = 30
+WHEEL_RADIUS = 2.8
+AXLE_TRACK_CM = 8.8
+GYRO_GAIN = 3
+GYRO_PD = 9
+GYRO_MOUNT = "up" # or "down"
+
 ################################
 # Define custom_robot Class
 ################################
@@ -180,7 +196,7 @@ class robot_19991:
         self.axle_track = 5.6
 
         # this is the gain we use when going straight with the gyro sensor
-        self.gyro_gain = 3
+        self.gyro_gain = GYRO_GAIN
 
 ################################
 # Define functions 
@@ -237,31 +253,55 @@ class robot_19991:
             angle positive = clockwise
             angle negative = counter-clockwise
         '''
+        self.gyro_sensor.reset_angle(angle=0)
         min_speed = 50
         #Get the current angle
-        starting_angle = self.gyro_sensor.angle()
-        target_angle = starting_angle - angle
-        # Robot must be stopped first
-        self.robot.stop()
+        starting_angle = 0
+        target_angle = angle
         # The gyro is mounted upside-down which reverses the gyro measurements 
-        if angle >= 0:
-        #clockwise
-            while self.gyro_sensor.angle() >= target_angle:
-                # Ramp the speed based on the perecntage of the turn completed.
-                scale = abs((self.gyro_sensor.angle() - starting_angle) / (target_angle - starting_angle))
-                unbound_speed = speed * (1 - scale)
-                current_speed = max(unbound_speed, self.min_tank_turn_speed)
-                self.left_drive_motor.run(current_speed)
-                self.right_drive_motor.run(-current_speed)
+        if GYRO_MOUNT == "down":
+            if angle >= 0:
+            #clockwise
+                while self.gyro_sensor.angle() >= target_angle:
+                    # Ramp the speed based on the perecntage of the turn completed.
+                    scale = abs((self.gyro_sensor.angle() - starting_angle) / (target_angle - starting_angle))
+                    unbound_speed = speed * (1 - scale)
+                    current_speed = max(unbound_speed, self.min_tank_turn_speed)
+                    self.left_drive_motor.run(current_speed)
+                    self.right_drive_motor.run(-current_speed)
+                    print("gt %s" % self.gyro_sensor.angle())
+            else:
+            #counter-clockwise
+                while self.gyro_sensor.angle() <= target_angle:
+                    # Ramp the speed based on the perecntage of the turn completed.
+                    scale = abs((self.gyro_sensor.angle() - starting_angle) / (target_angle - starting_angle))
+                    unbound_speed = speed * (1 - scale)
+                    current_speed = max(unbound_speed, self.min_tank_turn_speed)
+                    self.left_drive_motor.run(-current_speed)
+                    self.right_drive_motor.run(current_speed)
+                    print("lt %s" % self.gyro_sensor.angle())
         else:
-        #counter-clockwise
-            while self.gyro_sensor.angle() <= target_angle:
-                # Ramp the speed based on the perecntage of the turn completed.
-                scale = abs((self.gyro_sensor.angle() - starting_angle) / (target_angle - starting_angle))
-                unbound_speed = speed * (1 - scale)
-                current_speed = max(unbound_speed, self.min_tank_turn_speed)
-                self.left_drive_motor.run(-current_speed)
-                self.right_drive_motor.run(current_speed)
+            if angle <= 0:
+            #counter-clockwise
+                while self.gyro_sensor.angle() > target_angle:
+                    # Ramp the speed based on the perecntage of the turn completed.
+                    scale = abs((self.gyro_sensor.angle() - starting_angle) / (target_angle - starting_angle))
+                    unbound_speed = speed * (1 - scale)
+                    current_speed = max(unbound_speed, self.min_tank_turn_speed)
+                    self.left_drive_motor.run(-current_speed)
+                    self.right_drive_motor.run(current_speed)
+                    print("gt %s" % self.gyro_sensor.angle())
+            else:
+            #clockwise
+                while self.gyro_sensor.angle() < target_angle:
+                    # Ramp the speed based on the perecntage of the turn completed.
+                    scale = abs((self.gyro_sensor.angle() - starting_angle) / (target_angle - starting_angle))
+                    unbound_speed = speed * (1 - scale)
+                    current_speed = max(unbound_speed, self.min_tank_turn_speed)
+                    self.left_drive_motor.run(current_speed)
+                    self.right_drive_motor.run(-current_speed)
+                    print("lt %s" % self.gyro_sensor.angle())
+
         self.left_drive_motor.brake()
         self.right_drive_motor.brake()    
 
@@ -279,7 +319,7 @@ class robot_19991:
         # 1) If the value is too large, the robot will over-correct for errors and snake back and forth.  
         # 2) If the value is too small, the robot will not correct enough and will go off course.
         # 3) If the robot spins in circles, try making this value negative (pd=-1)
-        pd = -4
+        pd = GYRO_PD
 
         # Get the current gyro angle.  This is the direction the robot should keep driving. 
         starting_angle = self.gyro_sensor.angle()
@@ -317,7 +357,7 @@ class robot_19991:
         # 1) If the value is too large, the robot will over-correct for errors and snake back and forth.  
         # 2) If the value is too small, the robot will not correct enough and will go off course.
         # 3) If the robot spins in circles, try making this value negative (pd=-1)
-        pd = -4
+        pd = GYRO_PD
 
         # Get the current gyro angle.  This is the direction the robot should keep driving. 
         starting_angle = self.gyro_sensor.angle()
