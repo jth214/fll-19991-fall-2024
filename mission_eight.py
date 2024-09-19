@@ -22,5 +22,5 @@ def mission_eight(r):
     wait(time=100)
     # Mission Name
     # Authors
-    r.robot.drive(speed=1050, turn_rate=0)
+    r.robot.drive(speed=500, turn_rate=0)
     wait(time=4000)

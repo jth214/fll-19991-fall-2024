@@ -27,7 +27,7 @@ MIN_TANK_TURN_SPEED = 30
 WHEEL_RADIUS = 2.8
 AXLE_TRACK_CM = 8.8
 GYRO_GAIN = 3
-GYRO_PD = 9
+GYRO_PD = 4
 GYRO_MOUNT = "up" # or "down"
 
 ################################
@@ -253,6 +253,7 @@ class robot_19991:
             angle positive = clockwise
             angle negative = counter-clockwise
         '''
+        self.robot.reset()
         self.gyro_sensor.reset_angle(angle=0)
         min_speed = 50
         #Get the current angle
