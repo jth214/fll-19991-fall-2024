@@ -16,16 +16,16 @@ from pybricks.media.ev3dev import Font
 
 # Define all constants here
 STRAIGHT_SPEED = 400
-STRAIGHT_ACCELERATION = 75
-WHEEL_DIAMETER=56.5
-AXLE_TRACK_MM=88
+STRAIGHT_ACCELERATION = 0.1
+WHEEL_DIAMETER=97
+AXLE_TRACK_MM=111.4
 TURN_RATE=200
 TURN_ACCELERATION=75
 MIN_DRIVE_SPEED = 60
-DRIVE_ACCELERATION = 1
+DRIVE_ACCELERATION = 0.5
 MIN_TANK_TURN_SPEED = 30
-WHEEL_RADIUS = 2.8
-AXLE_TRACK_CM = 8.8
+WHEEL_RADIUS = WHEEL_DIAMETER/2
+AXLE_TRACK_CM = AXLE_TRACK_MM/10
 GYRO_GAIN = 3
 GYRO_PD = 4
 GYRO_MOUNT = "up" # or "down"
@@ -104,6 +104,7 @@ class robot_19991:
             wait(4000)
             self.ev3.screen.clear()
             sys.exit()
+        ''' 
         try:
             self.left_color_sensor = ColorSensor(Port.S1)
         except: 
@@ -140,6 +141,7 @@ class robot_19991:
             wait(4000)
             self.ev3.screen.clear()
             sys.exit()
+        '''
         try:
             self.gyro_sensor = GyroSensor(Port.S4)
         except: 
@@ -153,8 +155,8 @@ class robot_19991:
             self.ev3.screen.clear()
             sys.exit()
         try:
-            self.robot = DriveBase(self.left_drive_motor, self.right_drive_motor, wheel_diameter=88, axle_track=115)
-            self.robot.settings(straight_speed=400, straight_acceleration=300, turn_rate=200, turn_acceleration=123)
+            self.robot = DriveBase(self.left_drive_motor, self.right_drive_motor, wheel_diameter=WHEEL_DIAMETER, axle_track=AXLE_TRACK_MM)
+            self.robot.settings(straight_speed=STRAIGHT_SPEED, straight_acceleration=STRAIGHT_ACCELERATION, turn_rate=TURN_RATE, turn_acceleration=TURN_ACCELERATION)
             self.ev3.screen.clear()
             self.ev3.light.off()
             self.ev3.light.on(Color.GREEN)
@@ -180,7 +182,7 @@ class robot_19991:
 
         # This sets how quickly the robot speeds up and slows down
         # unit(s) of speed (mm/s) per 1 unit of distance (mm)
-        self.drive_acceleration = 1.
+        self.drive_acceleration = DRIVE_ACCELERATION
 
         # This sets the minimum tank turn speed to prevent stalling
         self.min_tank_turn_speed = 30.
@@ -188,12 +190,12 @@ class robot_19991:
         # This is the radius of the wheels in cms
         # This is so we can convert distance to wheel rotation(s) or the 
         # other way around
-        self.wheel_radius = 4.4
+        self.wheel_radius = WHEEL_RADIUS/10
 
         # half of the distace between the wheels(in cms, obvously)
         # We need this in order to convert from degrees we want to spin the bot
         # to how far those wheels have to move.
-        self.axle_track = 5.6
+        self.axle_track = AXLE_TRACK_CM
 
         # this is the gain we use when going straight with the gyro sensor
         self.gyro_gain = GYRO_GAIN
@@ -307,6 +309,46 @@ class robot_19991:
         self.right_drive_motor.brake()    
 
     # gyro drive straight
+    def gyro_drive_straight_distance_pd(self,speed, distance, pd):
+        ''' Drive straight using the gyro.
+            Use a proportional feedback loop.
+        '''
+        # Reset the distance to 0.
+        self.robot.reset()
+        self.gyro_sensor.reset_angle(0)
+
+        # Define the feedback loop gain value, "pd."  This determines how much the robot
+        # will correct when it drives off course.  
+        # This value may need to be adjusted.  Here are some tips:
+        # 1) If the value is too large, the robot will over-correct for errors and snake back and forth.  
+        # 2) If the value is too small, the robot will not correct enough and will go off course.
+        # 3) If the robot spins in circles, try making this value negative (pd=-1)
+        #pd = GYRO_PD
+
+        # Get the current gyro angle.  This is the direction the robot should keep driving. 
+        starting_angle = self.gyro_sensor.angle()
+        # Create a while loop so the robot will drive until it reaches the target distance.  Inside the loop
+        # the robot's current direction, "self.gyro_sensor.angle()" is repeatedly checked to see if it has gone off course. 
+        # If needed, a course correction is made to turn back to the desired direction (starting_angle)
+        while abs(self.robot.distance()) <= distance:
+            # Calculate the error (the difference) between where the robot should be pointed and where it is pointed
+            # Where the robot should be pointed:     starting_angle
+            # Where the robot is currently pointed:  self.gyro_sensor.angle()
+            direction_error = starting_angle - self.gyro_sensor.angle()
+            print(self.gyro_sensor.angle())
+
+            # Use the feedback loop gain value, "pd" multiplied by the, "direction_error" to make the robot turn back
+            # on course.
+            turn = direction_error * pd
+
+            # The robot should drive with the speed passed into this method, "gyro_drive_straight" and turn based on
+            # the correction needed to keep going straight.
+            self.robot.drive(speed,turn)
+        self.robot.stop()
+        self.left_drive_motor.brake()
+        self.right_drive_motor.brake()
+
+        # gyro drive straight
     def gyro_drive_straight_distance(self,speed, distance):
         ''' Drive straight using the gyro.
             Use a proportional feedback loop.
@@ -342,6 +384,8 @@ class robot_19991:
             # the correction needed to keep going straight.
             self.robot.drive(speed,turn)
         self.robot.stop()
+        self.left_drive_motor.brake()
+        self.right_drive_motor.brake()
 
     # gyro drive straight
     def gyro_drive_straight_time(self,speed, time):
@@ -379,5 +423,7 @@ class robot_19991:
             # The robot should drive with the speed passed into this method, "gyro_drive_straight" and turn based on
             # the correction needed to keep going straight.
             self.robot.drive(speed,turn) 
-        self.robot.stop()               
+        self.robot.stop()
+        self.left_drive_motor.brake()
+        self.right_drive_motor.brake()
 

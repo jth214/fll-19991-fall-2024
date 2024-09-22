@@ -22,8 +22,9 @@ def mission_five(r):
     wait(time=100)
     # Mission Name
     # Authors
-    r.left_attachment_motor.run_angle(1500, 90, then=Stop.COAST, wait=True)
-    wait(time=500)
-    r.left_attachment_motor.run_angle(1500, -80, then=Stop.COAST, wait=True)    
+    #r.left_attachment_motor.run_angle(1500, 90, then=Stop.COAST, wait=True)
+    #wait(time=500)
+    #r.left_attachment_motor.run_angle(1500, -80, then=Stop.COAST, wait=True)    
+    r.gyro_drive_straight_distance_pd(speed=500,distance=1500, pd=9)
 
     

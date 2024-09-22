@@ -22,5 +22,6 @@ def mission_two(r):
     wait(time=100)
     # Mission Name
     # Authors
-    r.gyro_drive_straight_time(speed=500,time=6000)
+    #r.gyro_drive_straight_time(speed=500,time=6000)
+    r.gyro_drive_straight_distance_pd(speed=500,distance=1500, pd=2)
     
