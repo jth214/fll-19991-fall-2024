@@ -18,17 +18,23 @@ from mission_eight import mission_eight
 def displayMENU(r,menu):
     # top left center bottom right
     if(menu == 1):
+        '''
         r.ev3.screen.draw_text(70, 0, "M1")
         r.ev3.screen.draw_text(135, 50, "M2")
         r.ev3.screen.draw_text(70, 100, "M3")
         r.ev3.screen.draw_text(0, 50, "M4")
         r.ev3.screen.draw_text(70, 50, "SW")
+        '''
+        r.ev3.screen.draw_image(x=10,y=10,source='menu1.png',transparent=None)
     else:
+        '''
         r.ev3.screen.draw_text(70, 0, "M5")
         r.ev3.screen.draw_text(135, 50, "M6")
         r.ev3.screen.draw_text(70, 100, "M7")
         r.ev3.screen.draw_text(0, 50, "M8")
         r.ev3.screen.draw_text(70, 50, "SW")
+        '''
+        r.ev3.screen.draw_image(x=10,y=10,source='menu2.png',transparent=None)
 
 # Cleanup after a mission
 def cleanup(r):

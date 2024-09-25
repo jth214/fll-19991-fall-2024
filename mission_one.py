@@ -24,5 +24,6 @@ def mission_one(r):
     # Mission Name
     # Authors
     # r.gyro_drive_straight_distance(speed=500,distance=1500)
-    r.gyro_drive_straight_distance_pd(speed=500,distance=1500, pd=1)
+    r.gyro_drive_straight_distance(speed=500,distance=910)
+    r.tank_turn(speed=500, angle=20)
     
