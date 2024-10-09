@@ -25,7 +25,7 @@ def mission_three(r):
     #r.gyro_drive_straight_distance(speed=500,distance=750)
     #r.gyro_tank_turn(speed=500,angle=30)
     #r.gyro_drive_straight_distance(speed=500,distance=750)
-    r.gyro_drive_straight_distance(speed=500,distance=370)
+    r.right_attachment_motor.run_time(speed=500, time=5000, then=Stop.HOLD, wait=True)
     
 
 

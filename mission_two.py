@@ -20,8 +20,10 @@ def mission_two(r):
     print("Running Mission 2")
     r.ev3.screen.draw_text(30, 60, "Mission 2")
     wait(time=100)
-    # Mission Name
-    # Authors
-    #r.gyro_drive_straight_time(speed=500,time=6000)
-    r.gyro_drive_straight_distance_pd(speed=500,distance=1500, pd=2)
-    
+    # Mission Name: Coral nursery and Shark
+    r.gyro_drive_straight_distance(speed=500,distance=630)
+    r.gyro_tank_turn(speed=50, angle=50)
+    r.gyro_drive_straight_distance(speed=500,distance=75)
+    r.gyro_drive_straight_distance(speed=500,distance=-75)
+    r.gyro_tank_turn(speed=500, angle=-15)
+    r.gyro_drive_straight_distance(speed=500,distance=200)
