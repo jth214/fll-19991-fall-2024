@@ -361,7 +361,7 @@ class robot_19991:
         # 1) If the value is too large, the robot will over-correct for errors and snake back and forth.  
         # 2) If the value is too small, the robot will not correct enough and will go off course.
         # 3) If the robot spins in circles, try making this value negative (pd=-1)
-        pd = 9
+        pd = GYRO_PD
 
         # Get the current gyro angle.  This is the direction the robot should keep driving. 
         starting_angle = self.gyro_sensor.angle()
