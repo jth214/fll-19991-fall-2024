@@ -21,16 +21,13 @@ def mission_three(r):
     r.ev3.screen.draw_text(30, 60, "Mission 3")
     wait(time=100)
     # Mission Name
-    # Authors
+    # sebstian.cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
     #r.gyro_drive_straight_distance(speed=500,distance=750)
     #r.gyro_tank_turn(speed=500,angle=30)
     #r.gyro_drive_straight_distance(speed=500,distance=750)
-    r.right_attachment_motor.run_time(speed=500, time=5000, then=Stop.HOLD, wait=True)
-    
-
-
-
-
-
-
-  
+    #r.right_attachment_motor.run_time(speed=500, time=5000, then=Stop.HOLD, wait=True)
+    r.gyro_drive_straight_distance(speed=500,distance=960)
+    r.gyro_tank_turn(speed=500,angle=-200)
+    r.gyro_drive_straight_distance(speed=500,distance=50)
+    r.gyro_drive_straight_distance(speed=500,distance=-50)
+    #r.gyro_tank_turn(speed=500,angle=-)

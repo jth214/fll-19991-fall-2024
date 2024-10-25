@@ -20,7 +20,8 @@ def mission_eight(r):
     print("Running Mission 8")
     r.ev3.screen.draw_text(30, 60, "Mission 8")
     wait(time=100)
-    # Mission Name
+    # Mission Name sharck delivery
     # Authors
-    r.robot.drive(speed=500, turn_rate=0)
-    wait(time=4000)
+    r.gyro_drive_straight_distance(speed=500,distance=850)
+    r.gyro_drive_straight_distance(speed=500,distance=-850)
+ 

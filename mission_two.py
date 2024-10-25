@@ -23,7 +23,10 @@ def mission_two(r):
     # Mission Name: Coral nursery and Shark
     r.gyro_drive_straight_distance(speed=200,distance=630)
     r.gyro_tank_turn(speed=50, angle=70)
-    r.gyro_drive_straight_distance(speed=200,distance=100)
+    r.gyro_drive_straight_distance(speed=200,distance=120)
     r.gyro_drive_straight_distance(speed=200,distance=-75)
     r.gyro_tank_turn(speed=50, angle=-15)
-    r.gyro_drive_straight_distance(speed=200,distance=350)
+    r.gyro_drive_straight_distance(speed=200,distance=310)
+    r.gyro_drive_straight_distance(speed=200,distance=-200)
+    r.gyro_tank_turn(speed=50, angle=-60)
+    r.gyro_drive_straight_distance(speed=200,distance=-870)
