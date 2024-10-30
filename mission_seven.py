@@ -22,4 +22,4 @@ def mission_seven(r):
     wait(time=100)
     # Mission Name
     # Authors
-    r.robot.straight(distance=1500)
+    r.gyro_drive_straight_distance(speed=700,distance=1800)
