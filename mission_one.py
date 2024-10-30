@@ -14,14 +14,14 @@ from robot_19991 import robot_19991
 
 def mission_one(r):
     print("Running Mission 1")
-    # Mission Name PINA X1
+    # Mission Name PINA Unknown Creature Capture 09
     # Authors= PJOYA THE PINAPANDA
     r.ev3.screen.clear()
     print("Running Mission 1")
     r.ev3.screen.draw_text(30, 60, "Mission 1")
     wait(250)
     r.robot.stop()
-    # Mission Name
+    # Mission Name 
     # Authors
     r.gyro_drive_straight_distance(speed=500,distance=500)
     r.gyro_drive_straight_distance(speed=500,distance=-500)

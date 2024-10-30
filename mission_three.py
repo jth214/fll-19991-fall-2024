@@ -36,5 +36,6 @@ def mission_three(r):
     r.gyro_drive_straight_distance(speed=500,distance=-50)
     r.gyro_tank_turn(speed=500,angle=30)
     #r.gyro_drive_straight_distance(speed=500,distance=-75)
-    r.robot.drive(speed=-200,turn_rate=-1)
-    r.gyro_drive_straight_distance(speed=500,distance=960)
+    r.robot.drive(speed=200,turn_rate=0)
+    r.robot.straight(400)
+    r.gyro_drive_straight_distance(speed=500,distance=-950)
