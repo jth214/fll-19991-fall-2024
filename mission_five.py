@@ -30,6 +30,8 @@ def mission_five(r):
     r.gyro_drive_straight_distance(speed=600,distance=100)
     r.left_attachment_motor.run_time(speed=500, time=1000, then=Stop.HOLD, wait=True)
     r.left_attachment_motor.stop
+    r.robot.stop()
+    wait(10)
     r.gyro_drive_straight_distance(speed=600,distance=-100)
     r.gyro_tank_turn(speed=50, angle=-90)
     r.gyro_drive_straight_distance(speed=500,distance=-800)
