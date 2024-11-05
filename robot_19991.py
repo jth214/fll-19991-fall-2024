@@ -28,7 +28,7 @@ MIN_TANK_TURN_SPEED = 30
 WHEEL_RADIUS = WHEEL_DIAMETER/2
 AXLE_TRACK_CM = AXLE_TRACK_MM/10
 GYRO_GAIN = 3
-GYRO_PD = 6 #4 or 6 is also a good value
+GYRO_PD = 1 #4 or 6 is also a good value
 GYRO_MOUNT = "up" # or "down"
 
 ################################
