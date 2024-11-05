@@ -44,11 +44,6 @@ def mission_three(r):
     r.gyro_tank_turn(speed=500,angle=30)
     print("8")
     #r.gyro_drive_straight_distance(speed=500,distance=-75)
-<<<<<<< HEAD
-    r.robot.drive(speed=200,turn_rate=0)
-    r.robot.straight(400)
-    r.gyro_drive_straight_distance(speed=500,distance=-950)
-=======
     r.robot.straight(distance=260)
     print("9")
     #wait(200)
@@ -60,4 +55,3 @@ def mission_three(r):
     r.gyro_drive_straight_distance(speed=500,distance=-100)
     r.gyro_tank_turn(speed=500,angle=-200)
     #drive straight
->>>>>>> ceaeb70 (from sat meeting)

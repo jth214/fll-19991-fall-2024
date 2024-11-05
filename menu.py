@@ -14,6 +14,11 @@ from mission_five import mission_five
 from mission_six import mission_six
 from mission_seven import mission_seven
 from mission_eight import mission_eight
+from mission_nine import mission_nine
+from mission_ten import mission_ten
+from mission_eleven import mission_eleven
+from mission_twelve import mission_twelve
+
 # displays which button runs each launch
 def displayMENU(r,menu):
     # top left center bottom right
@@ -36,11 +41,9 @@ def displayMENU(r,menu):
         '''
         r.ev3.screen.draw_image(x=10,y=10,source='menu2.png',transparent=None)
     elif (menu == 3):
-        r.ev3.screen.draw_text(70, 0, "M9")
-        r.ev3.screen.draw_text(135, 50, "M10")
-        r.ev3.screen.draw_text(70, 100, "M11")
-        r.ev3.screen.draw_text(0, 50, "M12")
-        r.ev3.screen.draw_text(70, 50, "SW")
+        r.ev3.screen.draw_image(x=10,y=10,source='menu3.png',transparent=None)
+    elif (menu == 4):
+        r.ev3.screen.draw_image(x=10,y=10,source='menu4.png',transparent=None)
     else:
         exit()
 
@@ -48,6 +51,10 @@ def displayMENU(r,menu):
 # Cleanup after a mission
 def cleanup(r):
     # Stop the robot
+    r.robot.stop()
+    r.left_drive_motor.brake()
+    r.right_drive_motor.brake()
+    wait(500)
     r.robot.stop()
     # Clear the display
     r.ev3.screen.clear()

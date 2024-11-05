@@ -30,19 +30,11 @@ def mission_five(r):
     r.gyro_drive_straight_distance(speed=600,distance=100)
     r.left_attachment_motor.run_time(speed=500, time=500, then=Stop.HOLD, wait=True)
     r.left_attachment_motor.stop
-<<<<<<< HEAD
-    r.robot.stop()
-    wait(10)
-    r.gyro_drive_straight_distance(speed=600,distance=-100)
-    r.gyro_tank_turn(speed=50, angle=-90)
-    r.gyro_drive_straight_distance(speed=500,distance=-800)
-=======
     r.gyro_drive_straight_distance(speed=1000,distance=-300)
     r.gyro_tank_turn(speed=1000, angle=-90)
     r.gyro_drive_straight_distance(speed=1000,distance=100)
     r.left_attachment_motor.run_time(speed=500, time=500, then=Stop.HOLD, wait=True)
     r.gyro_drive_straight_distance(speed=1000,distance=-800)
->>>>>>> ceaeb70 (from sat meeting)
 
 
     

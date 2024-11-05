@@ -23,7 +23,9 @@ def mission_one(r):
     r.robot.stop()
     # Mission Name 
     # Authors
-    r.gyro_drive_straight_distance(speed=500,distance=500)
-    r.gyro_drive_straight_distance(speed=500,distance=-500)
+    r.gyro_drive_straight_distance(speed=200,distance=500)
+    r.gyro_drive_straight_distance(speed=200,distance=-500)
+    #r.left_drive_motor.brake()
+    #r.right_drive_motor.brake()
     #r.gyro_tank_turn(speed=500, angle=-75)
     #r.gyro_drive_straight_distance(speed=500,distance=270)

@@ -15,20 +15,20 @@ from pybricks.hubs import EV3Brick
 from pybricks.media.ev3dev import Font
 
 # Define all constants here
-STRAIGHT_SPEED = 400
-STRAIGHT_ACCELERATION = 100
+STRAIGHT_SPEED = 500
+STRAIGHT_ACCELERATION = 120 #seems to control r.straight()
 WHEEL_DIAMETER=97
 AXLE_TRACK_MM=111.4
-TURN_RATE=200
-TURN_ACCELERATION=75
+TURN_RATE=20
+TURN_ACCELERATION=10
 MIN_DRIVE_SPEED = 60
 #DRIVE_ACCELERATION = 0.5
-DRIVE_ACCELERATION = 1
+DRIVE_ACCELERATION = 120
 MIN_TANK_TURN_SPEED = 30
 WHEEL_RADIUS = WHEEL_DIAMETER/2
 AXLE_TRACK_CM = AXLE_TRACK_MM/10
 GYRO_GAIN = 3
-GYRO_PD = 6 #4 is also a good value
+GYRO_PD = 6 #4 or 6 is also a good value
 GYRO_MOUNT = "up" # or "down"
 
 ################################
@@ -200,6 +200,7 @@ class robot_19991:
 
         # this is the gain we use when going straight with the gyro sensor
         self.gyro_gain = GYRO_GAIN
+        #self.set_run_settings(60, 120)
 
 ################################
 # Define functions 
@@ -304,9 +305,11 @@ class robot_19991:
                     self.left_drive_motor.run(current_speed)
                     self.right_drive_motor.run(-current_speed)
                     print("lt %s" % self.gyro_sensor.angle())
-
+        self.robot.stop()
         self.left_drive_motor.brake()
-        self.right_drive_motor.brake()    
+        self.right_drive_motor.brake()
+        wait(500)
+        self.robot.stop()
 
     # gyro drive straight
     def gyro_drive_straight_distance_pd(self,speed, distance, pd):
@@ -347,6 +350,8 @@ class robot_19991:
         self.robot.stop()
         self.left_drive_motor.brake()
         self.right_drive_motor.brake()
+        wait(500)
+        self.robot.stop()
 
         # gyro drive straight
     def gyro_drive_straight_distance(self,speed, distance):
@@ -403,7 +408,9 @@ class robot_19991:
         self.robot.stop()
         self.left_drive_motor.brake()
         self.right_drive_motor.brake()
-
+        wait(500)
+        self.robot.stop()
+        
     # gyro drive straight
     def gyro_drive_straight_time(self,speed, time):
         ''' Drive straight using the gyro.
@@ -443,4 +450,6 @@ class robot_19991:
         self.robot.stop()
         self.left_drive_motor.brake()
         self.right_drive_motor.brake()
+        wait(500)
+        self.robot.stop()
 
