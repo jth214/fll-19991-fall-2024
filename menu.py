@@ -36,10 +36,10 @@ def displayMENU(r,menu):
         '''
         r.ev3.screen.draw_image(x=10,y=10,source='menu2.png',transparent=None)
     elif (menu == 3):
-        r.ev3.screen.draw_text(70, 0, "CAL")
-        r.ev3.screen.draw_text(135, 50, "")
-        r.ev3.screen.draw_text(70, 100, "")
-        r.ev3.screen.draw_text(0, 50, "")
+        r.ev3.screen.draw_text(70, 0, "M9")
+        r.ev3.screen.draw_text(135, 50, "M10")
+        r.ev3.screen.draw_text(70, 100, "M11")
+        r.ev3.screen.draw_text(0, 50, "M12")
         r.ev3.screen.draw_text(70, 50, "SW")
     else:
         exit()
@@ -126,6 +126,36 @@ def menu(r):
                 else:
                     print("UNDEFINED BUTTON ERROR!")
             elif menu == 3:
+                if btn == Button.UP:
+                    r.ev3.screen.clear()
+                    r.ev3.screen.draw_text(30, 60, "Mission 9")
+                    mission_nine(r)
+                    cleanup(r)
+                elif btn == Button.RIGHT:  
+                    r.ev3.screen.clear()
+                    r.ev3.screen.draw_text(30, 60, "Mission 10")  
+                    mission_ten(r)
+                    cleanup(r)
+                elif btn == Button.DOWN:
+                    r.ev3.screen.clear()
+                    r.ev3.screen.draw_text(30, 60, "Mission 11")  
+                    mission_eleven(r)
+                    cleanup(r)
+                elif btn == Button.LEFT:
+                    r.ev3.screen.clear()
+                    r.ev3.screen.draw_text(30, 60, "Mission 12")  
+                    mission_twelve(r)
+                    cleanup(r)
+                elif btn == Button.CENTER:
+                    menu = 4
+                    r.ev3.screen.clear()  
+                    displayMENU(r,menu)
+                    r.ev3.light.off()
+                    r.ev3.light.on(Color.GREEN)
+                    wait(500)
+                else:
+                    print("UNDEFINED BUTTON ERROR!")
+            elif menu == 4:
                 if btn == Button.CENTER:
                     menu = 1
                     r.ev3.screen.clear()  
