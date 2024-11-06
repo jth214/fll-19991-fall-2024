@@ -22,6 +22,13 @@ def mission_six(r):
     wait(time=100)
     # Mission Name
     # Authors
-    r.gyro_drive_straight_distance(speed=500,distance=250)
-    r.left_attachment_motor.run_time(speed=500, angle=45, then=Stop.HOLD, wait=True)
-    
+    r.gyro_drive_straight_distance(speed=500,distance=350)
+    #r.left_attachment_motor.run_angle(speed=500, rotation_angle=-45, then=Stop.HOLD, wait=True)
+    #r.left_attachment_motor.stop()
+    r.gyro_tank_turn(speed=500,angle=-10)
+   # r.gyro_drive_straight_distance(speed=500,distance=30)
+   # r.left_attachment_motor.run_angle(speed=500, rotation_angle=150, then=Stop.HOLD, wait=True)
+   # r.left_attachment_motor.stop()
+   # r.gyro_drive_straight_distance(speed=500,distance=-500)
+   # r.gyro_tank_turn(speed=500,angle=45)
+   # r.gyro_drive_straight_distance(speed=500,distance=200)

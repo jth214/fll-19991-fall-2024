@@ -14,8 +14,8 @@ from robot_19991 import robot_19991
 
 def mission_ten(r):  
     print("Running Mission 10")
-    # Mission Name
-    # Authors
+    # Mission Name - Kraken's Treasure
+    # Authors - Fin
     r.ev3.screen.clear()
     print("Running Mission 10")
     r.ev3.screen.draw_text(30, 60, "Mission 10")

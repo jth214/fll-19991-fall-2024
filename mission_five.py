@@ -25,15 +25,16 @@ def mission_five(r):
     #r.left_attachment_motor.run_angle(1500, 90, then=Stop.COAST, wait=True)
     #wait(time=500)
     #r.left_attachment_motor.run_angle(1500, -80, then=Stop.COAST, wait=True)    
-    r.gyro_drive_straight_distance(speed=500,distance=700)
+    r.gyro_drive_straight_distance(speed=500,distance=750)
     r.gyro_tank_turn(speed=1000, angle=90)
-    r.gyro_drive_straight_distance(speed=600,distance=100)
+    r.gyro_drive_straight_distance(speed=600,distance=50)
     r.left_attachment_motor.run_time(speed=500, time=500, then=Stop.HOLD, wait=True)
-    r.left_attachment_motor.stop
+    r.left_attachment_motor.stop()
     r.gyro_drive_straight_distance(speed=1000,distance=-300)
     r.gyro_tank_turn(speed=1000, angle=-90)
     r.gyro_drive_straight_distance(speed=1000,distance=100)
     r.left_attachment_motor.run_time(speed=500, time=500, then=Stop.HOLD, wait=True)
+    r.left_attachment_motor.stop()
     r.gyro_drive_straight_distance(speed=1000,distance=-800)
 
 
