@@ -20,4 +20,4 @@ def mission_seven(r):
     print("Running Mission 7")
     r.ev3.screen.draw_text(30, 60, "Mission 7")
     wait(time=100)
-    r.gyro_drive_straight_distance(speed=700,distance=1800)
+    r.gyro_drive_straight_distance(speed=200,distance=980)

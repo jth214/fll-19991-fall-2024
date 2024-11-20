@@ -20,7 +20,7 @@ def mission_four(r):
     print("Running Mission 4")
     r.ev3.screen.draw_text(30, 60, "Mission 4")
     wait(time=100)
-    # Mission Name: Angler Fish and Unexpected Encounter
+    # Mission Name: Unexpected Encounter
     # Authors
     #r.gyro_drive_straight_time(speed=500,time=2000)
     #r.gyro_tank_turn(1050,50)
